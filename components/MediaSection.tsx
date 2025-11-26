@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Play, Pause, SkipBack, SkipForward, Disc, Share2, ExternalLink } from 'lucide-react';
+import { Play, Pause, SkipBack, SkipForward, Disc, Share2, ExternalLink, Download } from 'lucide-react';
 import { FadeIn } from './ui/FadeIn';
 
 const tracks = [
@@ -13,7 +13,7 @@ const tracks = [
   {
     id: 2,
     title: "Global Frequency",
-    artist: "SMARTAMAN042 ft. Luna",
+    artist: "SMARTAMAN042 ft. Jahar",
     duration: "4:12",
     cover: "https://picsum.photos/400/400?random=202"
   },
@@ -27,7 +27,7 @@ const tracks = [
   {
     id: 4,
     title: "The Come Up",
-    artist: "SMARTAMAN042",
+    artist: "JAHAR",
     duration: "3:30",
     cover: "https://picsum.photos/400/400?random=204"
   }
@@ -74,6 +74,12 @@ export const MediaSection: React.FC = () => {
     setCurrentTrackIndex((prev) => (prev - 1 + tracks.length) % tracks.length);
     setProgress(0);
     setIsPlaying(true);
+  };
+
+  const handleDownload = (e: React.MouseEvent, trackTitle: string) => {
+    e.stopPropagation();
+    // Simulate download
+    alert(`Downloading ${trackTitle}...`);
   };
 
   return (
@@ -138,6 +144,9 @@ export const MediaSection: React.FC = () => {
                                         {isPlaying ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current ml-0.5" />}
                                     </button>
                                     <button onClick={nextTrack} className="text-gray-400 hover:text-white transition-colors"><SkipForward className="w-5 h-5" /></button>
+                                    <button onClick={(e) => handleDownload(e, currentTrack.title)} className="ml-auto text-gray-400 hover:text-white transition-colors" title="Download Track">
+                                        <Download className="w-5 h-5" />
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -168,8 +177,25 @@ export const MediaSection: React.FC = () => {
                                         </p>
                                         <p className="text-xs text-gray-500">{track.artist}</p>
                                     </div>
-                                    <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <Play className="w-3 h-3 text-white" />
+                                    <div className="flex items-center gap-3">
+                                        <button 
+                                            onClick={(e) => handleDownload(e, track.title)}
+                                            className="opacity-0 group-hover:opacity-100 transition-opacity p-2 hover:bg-white/10 rounded-full"
+                                            title="Download"
+                                        >
+                                            <Download className="w-3 h-3 text-white" />
+                                        </button>
+                                        <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                                            {currentTrackIndex === idx && isPlaying ? (
+                                                <div className="flex gap-0.5 h-3 items-end">
+                                                    <span className="w-0.5 h-full bg-smarta-accent animate-pulse"></span>
+                                                    <span className="w-0.5 h-2/3 bg-smarta-accent animate-pulse delay-75"></span>
+                                                    <span className="w-0.5 h-1/2 bg-smarta-accent animate-pulse delay-150"></span>
+                                                </div>
+                                            ) : (
+                                                <Play className="w-3 h-3 text-white" />
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             ))}

@@ -7,12 +7,13 @@ const artists = [
     name: "SMARTAMAN042",
     role: "Artist / CEO",
     genre: "Afro-Fusion / Hip-Hop",
-    image: "https://picsum.photos/800/1200?random=101",
+    // I've used a placeholder that matches the vibe. Replace this URL with your uploaded image path.
+    image: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&q=80&w=800", 
     desc: "The visionary behind Smarta Records, blending Texas grit with global rhythms.",
     link: "https://smartaman042.com"
   },
   {
-    name: "LUNA ECLIPSE",
+    name: "JAHAR",
     role: "Artist",
     genre: "R&B / Soul",
     image: "https://picsum.photos/800/1200?random=102",
