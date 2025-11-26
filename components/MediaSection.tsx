@@ -22,7 +22,7 @@ const tracks = [
     title: "Night Drive Phonk",
     artist: "SMARTAMAN042",
     duration: "2:58",
-    cover: "https://picsum.photos/400/400?random=20"
+    cover: "https://picsum.photos/400/400?random=203"
   },
   {
     id: 4,
