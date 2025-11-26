@@ -8,21 +8,21 @@ const tracks = [
     title: "Texas Heat (Anthem)",
     artist: "SMARTAMAN042",
     duration: "3:45",
-    cover: "https://picsum.photos/400/400?random=201"
+    cover: "/smartaman.jpg"
   },
   {
     id: 2,
     title: "Global Frequency",
     artist: "SMARTAMAN042 ft. Jahari",
     duration: "4:12",
-    cover: "https://picsum.photos/400/400?random=202"
+    cover: "/smartaman.jpg"
   },
   {
     id: 3,
     title: "Night Drive Phonk",
     artist: "SMARTAMAN042",
     duration: "2:58",
-    cover: "https://picsum.photos/400/400?random=203"
+    cover: "/smartaman.jpg"
   },
   {
     id: 4,
@@ -137,7 +137,12 @@ export const MediaSection: React.FC = () => {
                         {/* Now Playing */}
                         <div className="flex items-center gap-6 mb-8 pb-8 border-b border-white/5">
                             <div className="relative w-24 h-24 flex-shrink-0 group">
-                                <img src={currentTrack.cover} alt="Cover" className={`w-full h-full object-cover shadow-2xl ${isPlaying ? 'animate-pulse-slow' : ''}`} />
+                                <img 
+                                    src={currentTrack.cover} 
+                                    alt="Cover" 
+                                    onError={(e) => { e.currentTarget.src = "https://picsum.photos/400/400?random=200"; }}
+                                    className={`w-full h-full object-cover shadow-2xl ${isPlaying ? 'animate-pulse-slow' : ''}`} 
+                                />
                                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
                                     <Disc className={`w-10 h-10 text-white/80 ${isPlaying ? 'animate-spin-slow' : ''}`} />
                                 </div>
