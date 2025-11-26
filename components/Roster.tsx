@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Instagram, Twitter, Music, Globe } from 'lucide-react';
+import { ArrowUpRight, Globe } from 'lucide-react';
 import { FadeIn } from './ui/FadeIn';
 
 const artists = [
@@ -7,8 +7,8 @@ const artists = [
     name: "SMARTAMAN042",
     role: "Artist / CEO",
     genre: "Afro-Fusion / Hip-Hop",
-    // I've used a placeholder that matches the vibe. Replace this URL with your uploaded image path.
-    image: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&q=80&w=800", 
+    // Set to local path. User should place their image as 'smartaman.jpg' in public folder.
+    image: "/smartaman.jpg", 
     desc: "The visionary behind Smarta Records, blending Texas grit with global rhythms.",
     link: "https://smartaman042.com"
   },
@@ -66,6 +66,10 @@ export const Roster: React.FC = () => {
                         <img 
                             src={artist.image} 
                             alt={artist.name} 
+                            onError={(e) => {
+                                // Fallback to placeholder if local image is not found
+                                e.currentTarget.src = "https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&q=80&w=800";
+                            }}
                             className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0 grayscale opacity-80 group-hover:opacity-100"
                         />
                         

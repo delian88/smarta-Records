@@ -78,8 +78,17 @@ export const MediaSection: React.FC = () => {
 
   const handleDownload = (e: React.MouseEvent, trackTitle: string) => {
     e.stopPropagation();
-    // Simulate download
-    alert(`Downloading ${trackTitle}...`);
+    
+    // Simulate a file download using Blob
+    const blob = new Blob(["Simulated audio content for " + trackTitle], { type: 'audio/mpeg' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${trackTitle.replace(/\s+/g, '_')}.mp3`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
   };
 
   return (
