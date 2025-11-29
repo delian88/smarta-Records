@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { MediaSection } from './components/MediaSection';
 import { Roster } from './components/Roster';
 import { Services } from './components/Services';
+import { Events } from './components/Events';
 import { SongUploads } from './components/SongUploads';
 import { Gallery } from './components/Gallery';
 import { AiAssistant } from './components/AiAssistant';
@@ -17,6 +18,7 @@ const App: React.FC = () => {
       <main>
         <Hero />
         <MediaSection />
+        <Events />
         <Roster />
         <Services />
         <SongUploads />

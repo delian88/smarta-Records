@@ -3,7 +3,8 @@ import { FadeIn } from './ui/FadeIn';
 
 export const Gallery: React.FC = () => {
   const images = [
-    { src: "https://picsum.photos/800/800?random=1", size: "col-span-1 md:col-span-1 row-span-1" },
+    // User should place the new image as 'behind-the-scenes.jpg' in the public folder
+    { src: "/behind-the-scenes.jpg", size: "col-span-1 md:col-span-1 row-span-1" },
     { src: "https://picsum.photos/800/1200?random=2", size: "col-span-1 md:col-span-1 row-span-2" },
     { src: "https://picsum.photos/1200/800?random=3", size: "col-span-1 md:col-span-2 row-span-1" },
     { src: "https://picsum.photos/800/800?random=4", size: "col-span-1 md:col-span-1 row-span-1" },
@@ -36,6 +37,9 @@ export const Gallery: React.FC = () => {
                 <img 
                   src={img.src} 
                   alt={`Gallery ${idx}`} 
+                  onError={(e) => {
+                    e.currentTarget.src = `https://picsum.photos/800/800?random=${idx + 10}`;
+                  }}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">

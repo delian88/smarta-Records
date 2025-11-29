@@ -18,7 +18,16 @@ const artists = [
     genre: "R&B / Soul",
     // Set to local path. User should place their image as 'jahari.jpg' in public folder.
     image: "/jahari.jpg?v=2",
-    desc: "Ireland melodies that traverse the emotional landscape of modern life.",
+    desc: "Virgin Island melodies that traverse the emotional landscape of modern life.",
+    link: "#"
+  },
+  {
+    name: "LANO ROY",
+    role: "Artist",
+    genre: "Afro Dance",
+    // Set to local path. User should place their image as 'lanoroy.jpg' in public folder.
+    image: "/lanoroy.jpg",
+    desc: "A dynamic Afro Dance artist delivering infectious rhythms and vibrant energy.",
     link: "#"
   }
 ];
@@ -45,7 +54,7 @@ export const Roster: React.FC = () => {
                 </FadeIn>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
                 {artists.map((artist, idx) => (
                     <FadeIn key={idx} delay={idx * 150} className="group relative aspect-[3/4] overflow-hidden bg-gray-900 cursor-pointer border border-white/10 hover:border-smarta-accent transition-colors duration-500">
                         <img 
@@ -53,7 +62,7 @@ export const Roster: React.FC = () => {
                             alt={artist.name} 
                             onError={(e) => {
                                 // Fallback to placeholder if local image is not found
-                                e.currentTarget.src = "https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&q=80&w=800";
+                                e.currentTarget.src = "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=800";
                             }}
                             className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0 grayscale opacity-80 group-hover:opacity-100"
                         />
